@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Eligibility Prediction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(120deg, #1a73e8, #34a853);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.2s ease-out;
+    }
+    .container h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, select {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input:focus, select:focus {
+      outline: 2px solid #34a853;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #34a853;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Loan Eligibility Predictor</h1>
+    <form action="/predict" method="POST">
+      <input type="number" name="ApplicantIncome" placeholder="Applicant Income" required>
+      <input type="number" name="CoapplicantIncome" placeholder="Coapplicant Income" required>
+      <input type="number" name="LoanAmount" placeholder="Loan Amount (in thousands)" required>
+      <select name="CreditHistory" required>
+        <option value="" disabled selected>Credit History</option>
+        <option value="1">Good (1)</option>
+        <option value="0">Bad (0)</option>
+      </select>
+      <select name="LoanTerm" required>
+        <option value="" disabled selected>Loan Term (months)</option>
+        <option value="360">30 years</option>
+        <option value="240">20 years</option>
+        <option value="120">10 years</option>
+      </select>
+      <select name="PropertyArea" required>
+        <option value="" disabled selected>Property Area</option>
+        <option value="0">Rural</option>
+        <option value="1">Urban</option>
+        <option value="2">Semi-Urban</option>
+      </select>
+      <button type="submit">Predict Loan Eligibility</button>
+    </form>
+  </div>
+</body>
+</html>
